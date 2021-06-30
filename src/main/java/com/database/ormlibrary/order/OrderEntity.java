@@ -1,6 +1,7 @@
 package com.database.ormlibrary.order;
 
-import com.database.ormlibrary.food.FoodOrderEntity;
+import com.database.ormlibrary.driver.DriverEntity;
+import com.database.ormlibrary.food.MenuItemEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,14 +12,15 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private Boolean delivery;
-//    private DriverEntity driver;
+    @ManyToOne(targetEntity = DriverEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    private DriverEntity driver;
     private String restaurantNote;
     private String driverNote;
     private Boolean active;
     @OneToMany
     private List<OrderConfigurationEntity> configurations;
-    @OneToMany
-    private List<FoodOrderEntity> items;
+    @ManyToMany(targetEntity = MenuItemEntity.class, cascade = CascadeType.ALL)
+    private List<MenuItemEntity> items;
 
     public Long getId() {
         return id;

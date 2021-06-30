@@ -8,8 +8,6 @@ public class MenuItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @ManyToOne
-    private RestaurantEntity restaurant;
     private String name;
     private String imageId;
     private String allergens; //allergen,allergen,allergen
@@ -24,15 +22,6 @@ public class MenuItemEntity {
 
     public MenuItemEntity setId(Long id) {
         this.id = id;
-        return this;
-    }
-
-    public RestaurantEntity getRestaurant() {
-        return restaurant;
-    }
-
-    public MenuItemEntity setRestaurant(RestaurantEntity restaurant) {
-        this.restaurant = restaurant;
         return this;
     }
 

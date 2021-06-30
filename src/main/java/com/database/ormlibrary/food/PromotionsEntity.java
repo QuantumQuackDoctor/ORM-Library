@@ -8,8 +8,6 @@ public class PromotionsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @ManyToOne
-    private RestaurantEntity restaurant;
     private String name;
     private String condition;
     private String discount; //type:amount ex. %:2.4

@@ -1,5 +1,7 @@
 package com.database.ormlibrary.driver;
 
+import com.database.ormlibrary.user.UserEntity;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +10,7 @@ public class DriverRatingEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @ManyToOne
-    private DriverEntity driver;
+    private UserEntity user;
     private Integer stars;
     private String description;
 }

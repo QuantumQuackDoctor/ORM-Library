@@ -11,8 +11,6 @@ public class RestaurantRatingEntity {
     private Long id;
     @ManyToOne
     private UserEntity user;
-    @ManyToOne
-    private RestaurantEntity restaurant;
     private String imageId;
     private Integer stars;
     private String description;

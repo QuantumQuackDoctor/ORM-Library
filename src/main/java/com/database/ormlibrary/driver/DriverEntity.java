@@ -1,5 +1,7 @@
 package com.database.ormlibrary.driver;
 
+import com.database.ormlibrary.user.SettingsEntity;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,8 @@ public class DriverEntity {
     private String firstName;
     private String lastName;
     private String car; //blue something i don't know car names
+    @Embedded
+    private SettingsEntity settings;
     @OneToMany
     private List<DriverRatingEntity> ratings;
 
