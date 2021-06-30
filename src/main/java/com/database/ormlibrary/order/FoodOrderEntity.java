@@ -4,8 +4,9 @@ import com.database.ormlibrary.food.MenuItemEntity;
 import com.database.ormlibrary.order.OrderEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
-//@Entity
+@Entity
 public class FoodOrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -13,7 +14,6 @@ public class FoodOrderEntity {
 
     @ManyToOne
     private MenuItemEntity item;
-    @ManyToOne(targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
-    private OrderEntity order;
-
+    @OneToMany
+    private List<OrderConfigurationEntity> configurations;
 }

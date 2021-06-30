@@ -18,9 +18,7 @@ public class OrderEntity {
     private String driverNote;
     private Boolean active;
     @OneToMany
-    private List<OrderConfigurationEntity> configurations;
-    @ManyToMany(targetEntity = MenuItemEntity.class, cascade = CascadeType.ALL)
-    private List<MenuItemEntity> items;
+    private List<FoodOrderEntity> items;
 
     public Long getId() {
         return id;
