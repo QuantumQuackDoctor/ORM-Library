@@ -9,6 +9,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String email;
+    private String password;
     private String phone;
     private String firstName;
     private String lastName;
@@ -20,6 +21,15 @@ public class UserEntity {
     private Integer points;
     @Embedded
     private SettingsEntity settings;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UserEntity setPassword(String password) {
+        this.password = password;
+        return this;
+    }
 
     public Long getId() {
         return id;
