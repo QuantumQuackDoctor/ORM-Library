@@ -1,6 +1,7 @@
 package com.database.ormlibrary.user;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private Boolean activated;
-    private Date birthDate;
+    private LocalDate birthDate;
     private Boolean isVeteran;
     @ManyToOne
     private UserRoleEntity userRole;
@@ -85,11 +86,11 @@ public class UserEntity {
         return this;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public UserEntity setBirthDate(Date birthDate) {
+    public UserEntity setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
         return this;
     }
