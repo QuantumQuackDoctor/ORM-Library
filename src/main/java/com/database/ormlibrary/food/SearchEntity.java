@@ -4,24 +4,24 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class SearchEntity{
-    private String primary; //term,term,term
-    private String secondary; //term,term,term
+    private String searchPrimary; //term,term,term
+    private String searchSecondary; //term,term,term
 
-    public String getPrimary() {
-        return primary;
+    public String getSearchPrimary() {
+        return searchPrimary;
     }
 
-    public SearchEntity setPrimary(String primary) {
-        this.primary = primary;
+    public SearchEntity setSearchPrimary(String primary) {
+        this.searchPrimary = primary;
         return this;
     }
 
-    public String getSecondary() {
-        return secondary;
+    public String getSearchSecondary() {
+        return searchSecondary;
     }
 
-    public SearchEntity setSecondary(String secondary) {
-        this.secondary = secondary;
+    public SearchEntity setSearchSecondary(String secondary) {
+        this.searchSecondary = secondary;
         return this;
     }
 }

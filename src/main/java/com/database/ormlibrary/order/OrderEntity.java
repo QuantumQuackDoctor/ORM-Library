@@ -12,13 +12,25 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private Boolean delivery;
+
+
     @ManyToOne(targetEntity = DriverEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private DriverEntity driver;
     private String restaurantNote;
     private String driverNote;
     private Boolean active;
+
     @OneToMany
     private List<FoodOrderEntity> items;
+    private Boolean refunded;
+
+    public List<FoodOrderEntity> getItems() {
+        return items;
+    }
+
+    public void setItems(List<FoodOrderEntity> items) {
+        this.items = items;
+    }
 
     public Long getId() {
         return id;
@@ -74,5 +86,13 @@ public class OrderEntity {
         return this;
     }
 
-    private Boolean refunded;
+    public DriverEntity getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverEntity driver) {
+        this.driver = driver;
+    }
+
+
 }

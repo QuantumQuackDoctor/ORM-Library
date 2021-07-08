@@ -13,6 +13,7 @@ public class MenuItemEntity {
     private String allergens; //allergen,allergen,allergen
     private Float price;
     private String description;
+
     @OneToMany
     private List<ConfigurationEntity> configurations;
 
