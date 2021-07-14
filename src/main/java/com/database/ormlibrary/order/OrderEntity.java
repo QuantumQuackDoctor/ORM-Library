@@ -20,6 +20,20 @@ public class OrderEntity {
     @OneToMany
     private List<FoodOrderEntity> items;
 
+    @Embedded
+    private OrderTimeEntity orderTimeEntity;
+
+    @Embedded
+    private  PriceEntity priceEntity;
+
+    public OrderTimeEntity getOrderTimeEntity() {
+        return orderTimeEntity;
+    }
+
+    public OrderEntity setOrderTimeEntity(OrderTimeEntity orderTimeEntity) {
+        this.orderTimeEntity = orderTimeEntity;
+        return this;
+    }
     public Long getId() {
         return id;
     }
