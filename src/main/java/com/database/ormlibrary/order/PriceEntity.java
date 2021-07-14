@@ -4,24 +4,24 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class PriceEntity {
-    private Float food;
-    private Float delivery;
+    private Float foodPrice;
+    private Float deliveryPrice;
 
     public Float getFood() {
-        return food;
+        return foodPrice;
     }
 
-    public PriceEntity setFood(Float food) {
-        this.food = food;
+    public PriceEntity setFood(Float foodPrice) {
+        this.foodPrice = foodPrice;
         return this;
     }
 
-    public Float getDelivery() {
-        return delivery;
+    public Float getDeliveryPrice() {
+        return deliveryPrice;
     }
 
-    public PriceEntity setDelivery(Float delivery) {
-        this.delivery = delivery;
+    public PriceEntity setDeliveryPrice(Float delivery) {
+        this.deliveryPrice = delivery;
         return this;
     }
 
