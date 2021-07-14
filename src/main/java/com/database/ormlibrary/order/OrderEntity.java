@@ -20,12 +20,44 @@ public class OrderEntity {
     @OneToMany
     private List<FoodOrderEntity> items;
 
+    @Embedded
+    private OrderTimeEntity orderTimeEntity;
+
+    @Embedded
+    private  PriceEntity priceEntity;
+
+    public OrderTimeEntity getOrderTimeEntity() {
+        return orderTimeEntity;
+    }
+
+    public OrderEntity setOrderTimeEntity(OrderTimeEntity orderTimeEntity) {
+        this.orderTimeEntity = orderTimeEntity;
+        return this;
+    }
     public Long getId() {
         return id;
     }
 
     public OrderEntity setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public DriverEntity getDriver() {
+        return driver;
+    }
+
+    public OrderEntity setDriver(DriverEntity driver) {
+        this.driver = driver;
+        return this;
+    }
+
+    public List<FoodOrderEntity> getItems() {
+        return items;
+    }
+
+    public OrderEntity setItems(List<FoodOrderEntity> items) {
+        this.items = items;
         return this;
     }
 
