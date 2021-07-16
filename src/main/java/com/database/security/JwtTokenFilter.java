@@ -1,5 +1,6 @@
 package com.database.security;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,13 +36,17 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }
 
         final String token = header.replace("Bearer ", "");
-
-        AuthDetails authDetails = authRepo.findByEmail(jwtTokenUtil.getEmail(token)).map(it ->
-                new AuthDetails(it.getId(),
-                        it.getEmail(),
-                        it.getPassword(),
-                        Collections.singleton(new SimpleGrantedAuthority(it.getUserRole().getRole())))
-        ).orElse(null);
+        AuthDetails authDetails;
+        try{
+            authDetails = authRepo.findByEmail(jwtTokenUtil.getEmail(token)).map(it ->
+                    new AuthDetails(it.getId(),
+                            it.getEmail(),
+                            it.getPassword(),
+                            Collections.singleton(new SimpleGrantedAuthority(it.getUserRole().getRole())))
+            ).orElse(null);
+        }catch (ExpiredJwtException ignored){ //don't really need to read a message here
+            authDetails = null;
+        }
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 authDetails, null, authDetails == null ? Collections.emptyList() : authDetails.getAuthorities()

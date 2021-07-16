@@ -16,6 +16,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -43,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/login", "/register").permitAll()
                 .and()
 
+                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
                 .csrf().disable()
 
                 //stateless session management
@@ -57,6 +61,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //add JWT filter
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS");
+            }
+        };
     }
 
     @Bean
