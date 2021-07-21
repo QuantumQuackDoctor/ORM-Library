@@ -1,6 +1,7 @@
 package com.database.ormlibrary.food;
 
 import com.database.ormlibrary.CoordinatesEmbeddable;
+import com.database.ormlibrary.SearchEmbeddable;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,8 +15,11 @@ public class RestaurantEntity {
     private Long iconId;
     private Long backgroundId;
     private Integer averageTime; //minutes
+    private Integer averageRating; //stars
     private Integer priceRating; //1-4
     private String address;
+    @Embedded
+    private SearchEmbeddable search;
     @Embedded
     private CoordinatesEmbeddable coordinates;
     @OneToMany
@@ -24,6 +28,25 @@ public class RestaurantEntity {
     private List<MenuItemEntity> menu;
     @OneToMany
     private List<RestaurantRatingEntity> ratings;
+
+    @Override
+    public String toString() {
+        return "RestaurantEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", iconId=" + iconId +
+                ", backgroundId=" + backgroundId +
+                ", averageTime=" + averageTime +
+                ", averageRating=" + averageRating +
+                ", priceRating=" + priceRating +
+                ", address='" + address + '\'' +
+                ", search=" + search +
+                ", coordinates=" + coordinates +
+                ", promotions=" + promotions +
+                ", menu=" + menu +
+                ", ratings=" + ratings +
+                '}';
+    }
 
     public Long getId() {
         return id;
@@ -70,6 +93,15 @@ public class RestaurantEntity {
         return this;
     }
 
+    public Integer getAverageRating() {
+        return averageRating;
+    }
+
+    public RestaurantEntity setAverageRating(Integer averageRating) {
+        this.averageRating = averageRating;
+        return this;
+    }
+
     public Integer getPriceRating() {
         return priceRating;
     }
@@ -85,6 +117,15 @@ public class RestaurantEntity {
 
     public RestaurantEntity setAddress(String address) {
         this.address = address;
+        return this;
+    }
+
+    public SearchEmbeddable getSearch() {
+        return search;
+    }
+
+    public RestaurantEntity setSearch(SearchEmbeddable search) {
+        this.search = search;
         return this;
     }
 
