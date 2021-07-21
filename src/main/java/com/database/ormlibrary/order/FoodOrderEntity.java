@@ -1,7 +1,6 @@
 package com.database.ormlibrary.order;
 
 import com.database.ormlibrary.food.MenuItemEntity;
-import com.database.ormlibrary.order.OrderEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,8 +14,10 @@ public class FoodOrderEntity {
     @OneToMany
     private List<OrderConfigurationEntity> configurations;
 
-    @ManyToOne
-    private MenuItemEntity item;
+    private Long restaurantId;
+
+    @ManyToMany
+    private List<MenuItemEntity> orderItems;
 
     public Long getId() {
         return id;
@@ -27,12 +28,21 @@ public class FoodOrderEntity {
         return this;
     }
 
-    public MenuItemEntity getItem() {
-        return item;
+    public List<MenuItemEntity> getOrderItems() {
+        return orderItems;
     }
 
-    public FoodOrderEntity setItem(MenuItemEntity item) {
-        this.item = item;
+    public FoodOrderEntity setOrderItems(List<MenuItemEntity> orderItem) {
+        this.orderItems = orderItem;
+        return this;
+    }
+
+    public Long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public FoodOrderEntity setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
         return this;
     }
 

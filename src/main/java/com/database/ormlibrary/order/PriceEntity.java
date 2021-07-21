@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PriceEntity {
     private Float food;
-    private Float delivery;
+    private Float deliveryPrice;
 
     public Float getFood() {
         return food;
@@ -16,12 +16,12 @@ public class PriceEntity {
         return this;
     }
 
-    public Float getDelivery() {
-        return delivery;
+    public Float getDeliveryPrice() {
+        return deliveryPrice;
     }
 
-    public PriceEntity setDelivery(Float delivery) {
-        this.delivery = delivery;
+    public PriceEntity setDeliveryPrice(Float delivery) {
+        this.deliveryPrice = delivery;
         return this;
     }
 
