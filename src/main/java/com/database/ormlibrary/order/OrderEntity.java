@@ -20,14 +20,14 @@ public class OrderEntity {
 
     private String address;
 
-    @OneToMany
+    @OneToMany (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FoodOrderEntity> items;
 
     @Embedded
     private OrderTimeEntity orderTimeEntity;
 
     @Embedded
-    private  PriceEntity priceEntity;
+    private PriceEntity priceEntity;
 
     public OrderTimeEntity getOrderTimeEntity() {
         return orderTimeEntity;
