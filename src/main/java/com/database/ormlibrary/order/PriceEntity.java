@@ -11,8 +11,8 @@ public class PriceEntity {
         return foodPrice;
     }
 
-    public PriceEntity setFood(Float food) {
-        this.foodPrice = food;
+    public PriceEntity setFood(Float foodPrice) {
+        this.foodPrice = foodPrice;
         return this;
     }
 
