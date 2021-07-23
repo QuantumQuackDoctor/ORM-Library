@@ -17,14 +17,17 @@ public class OrderEntity {
     private String restaurantNote;
     private String driverNote;
     private Boolean active;
-    @OneToMany
+
+    private String address;
+
+    @OneToMany (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FoodOrderEntity> items;
 
     @Embedded
     private OrderTimeEntity orderTimeEntity;
 
     @Embedded
-    private  PriceEntity priceEntity;
+    private PriceEntity priceEntity;
 
     public OrderTimeEntity getOrderTimeEntity() {
         return orderTimeEntity;
@@ -106,5 +109,50 @@ public class OrderEntity {
         return this;
     }
 
+    public DriverEntity getDriver() {
+        return driver;
+    }
+
+    public OrderEntity setDriver(DriverEntity driver) {
+        this.driver = driver;
+        return this;
+    }
+
+    public List<FoodOrderEntity> getItems() {
+        return items;
+    }
+
+    public OrderEntity setItems(List<FoodOrderEntity> items) {
+        this.items = items;
+        return this;
+    }
+
+    public PriceEntity getPriceEntity() {
+        return priceEntity;
+    }
+
+    public OrderEntity setPriceEntity(PriceEntity priceEntity) {
+        this.priceEntity = priceEntity;
+        return this;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public OrderEntity setAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
     private Boolean refunded;
+
+    public boolean checkRequiredFields(){
+        if (delivery == null || items == null
+        || orderTimeEntity == null || priceEntity == null
+        || address == null)
+            return false;
+        else
+            return true;
+    }
 }
