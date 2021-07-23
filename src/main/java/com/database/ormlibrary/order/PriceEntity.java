@@ -7,11 +7,11 @@ public class PriceEntity {
     private Float foodPrice;
     private Float deliveryPrice;
 
-    public Float getFoodPrice() {
+    public Float getFood() {
         return foodPrice;
     }
 
-    public PriceEntity setFoodPrice(Float food) {
+    public PriceEntity setFood(Float food) {
         this.foodPrice = food;
         return this;
     }
