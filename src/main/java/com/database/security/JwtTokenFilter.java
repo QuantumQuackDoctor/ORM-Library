@@ -30,7 +30,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (header == null || header.length() == 0 || !header.startsWith("Bearer ")) {
+        if (header == null || !header.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -45,7 +45,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                             Collections.singleton(new SimpleGrantedAuthority(it.getUserRole().getRole())))
             ).orElse(null);
         }catch (ExpiredJwtException ignored){ //don't really need to read a message here
-            authDetails = null;
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token is expired");
+            return;
         }
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
