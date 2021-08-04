@@ -1,6 +1,7 @@
 package com.database.ormlibrary.food;
 
 import com.database.ormlibrary.CoordinatesEmbeddable;
+import com.database.ormlibrary.HoursEmbeddable;
 import com.database.ormlibrary.SearchEmbeddable;
 
 import javax.persistence.*;
@@ -12,16 +13,19 @@ public class RestaurantEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    private Long iconId;
-    private Long backgroundId;
+    private String iconId;
+    private String backgroundId;
     private Integer averageTime; //minutes
     private Integer averageRating; //stars
     private Integer priceRating; //1-4
     private String address;
+    private String geolocation;
+    @Embedded
+    private HoursEmbeddable hours;
     @Embedded
     private SearchEmbeddable search;
-    @Embedded
-    private CoordinatesEmbeddable coordinates;
+//    @Embedded
+//    private CoordinatesEmbeddable coordinates;
     @OneToMany
     private List<PromotionsEntity> promotions;
     @OneToMany
@@ -40,8 +44,9 @@ public class RestaurantEntity {
                 ", averageRating=" + averageRating +
                 ", priceRating=" + priceRating +
                 ", address='" + address + '\'' +
+                ", geolocation='" + geolocation + '\'' +
+                ", hours=" + hours +
                 ", search=" + search +
-                ", coordinates=" + coordinates +
                 ", promotions=" + promotions +
                 ", menu=" + menu +
                 ", ratings=" + ratings +
@@ -66,20 +71,20 @@ public class RestaurantEntity {
         return this;
     }
 
-    public Long getIconId() {
+    public String getIconId() {
         return iconId;
     }
 
-    public RestaurantEntity setIconId(Long iconId) {
+    public RestaurantEntity setIconId(String iconId) {
         this.iconId = iconId;
         return this;
     }
 
-    public Long getBackgroundId() {
+    public String getBackgroundId() {
         return backgroundId;
     }
 
-    public RestaurantEntity setBackgroundId(Long backgroundId) {
+    public RestaurantEntity setBackgroundId(String backgroundId) {
         this.backgroundId = backgroundId;
         return this;
     }
@@ -120,21 +125,20 @@ public class RestaurantEntity {
         return this;
     }
 
+    public HoursEmbeddable getHours() {
+        return hours;
+    }
+
+    public void setHours(HoursEmbeddable hours) {
+        this.hours = hours;
+    }
+
     public SearchEmbeddable getSearch() {
         return search;
     }
 
     public RestaurantEntity setSearch(SearchEmbeddable search) {
         this.search = search;
-        return this;
-    }
-
-    public CoordinatesEmbeddable getCoordinates() {
-        return coordinates;
-    }
-
-    public RestaurantEntity setCoordinates(CoordinatesEmbeddable coordinates) {
-        this.coordinates = coordinates;
         return this;
     }
 
@@ -154,5 +158,21 @@ public class RestaurantEntity {
     public RestaurantEntity setRatings(List<RestaurantRatingEntity> ratings) {
         this.ratings = ratings;
         return this;
+    }
+
+    public String getGeolocation() {
+        return geolocation;
+    }
+
+    public void setGeolocation(String geolocation) {
+        this.geolocation = geolocation;
+    }
+
+    public List<PromotionsEntity> getPromotions() {
+        return promotions;
+    }
+
+    public void setPromotions(List<PromotionsEntity> promotions) {
+        this.promotions = promotions;
     }
 }
