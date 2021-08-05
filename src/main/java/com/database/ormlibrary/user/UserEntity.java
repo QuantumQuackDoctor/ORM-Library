@@ -3,17 +3,20 @@ package com.database.ormlibrary.user;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(unique = true)
     private String email;
     private String password;
     private String phone;
     private String firstName;
     private String lastName;
+    private UUID activationToken;
     private Boolean activated;
     private LocalDate birthDate;
     private Boolean isVeteran;
@@ -30,6 +33,14 @@ public class UserEntity {
     public UserEntity setPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    public UUID getActivationToken() {
+        return activationToken;
+    }
+
+    public void setActivationToken(UUID activationToken) {
+        this.activationToken = activationToken;
     }
 
     public Long getId() {
