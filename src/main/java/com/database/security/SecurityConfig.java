@@ -84,9 +84,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
-    @Bean
-    GrantedAuthorityDefaults grantedAuthorityDefaults(){
-        return new GrantedAuthorityDefaults(""); //remove role prefix
-    }
 }
