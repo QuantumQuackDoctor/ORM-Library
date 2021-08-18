@@ -1,8 +1,10 @@
 package com.database.ormlibrary.user;
 
+import com.database.ormlibrary.order.OrderEntity;
+
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,6 +27,25 @@ public class UserEntity {
     private Integer points;
     @Embedded
     private SettingsEntity settings;
+
+    @OneToMany (fetch = FetchType.EAGER)
+    private List<OrderEntity> orderList;
+
+    public boolean checkRequiredFields (){
+        return (this.email != null && this.email.length() != 0)
+                && (this.phone != null && this.phone.length() != 0)
+                && (this.firstName != null && this.firstName.length() != 0)
+                && (this.lastName != null && this.lastName.length() != 0);
+    }
+
+    public List<OrderEntity> getOrderList() {
+        return orderList;
+    }
+
+    public UserEntity setOrderList(List<OrderEntity> orders) {
+        this.orderList = orders;
+        return this;
+    }
 
     public String getPassword() {
         return password;
@@ -141,4 +162,6 @@ public class UserEntity {
         this.settings = settings;
         return this;
     }
+
+
 }
