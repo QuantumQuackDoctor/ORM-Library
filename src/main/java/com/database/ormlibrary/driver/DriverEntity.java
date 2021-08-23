@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class DriverEntity {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @OneToOne
