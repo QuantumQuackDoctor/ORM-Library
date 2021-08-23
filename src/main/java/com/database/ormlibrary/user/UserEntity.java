@@ -5,7 +5,6 @@ import com.database.ormlibrary.order.OrderEntity;
 import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,14 +31,14 @@ public class UserEntity {
     private SettingsEntity settings;
 
     @OneToMany
-    private List<OrderEntity> orders;
+    private List<OrderEntity> orderList;
 
-    public List<OrderEntity> getOrders() {
-        return orders;
+    public List<OrderEntity> getOrderList() {
+        return orderList;
     }
 
-    public UserEntity setOrders(List<OrderEntity> orders) {
-        this.orders = orders;
+    public UserEntity setOrderList(List<OrderEntity> orders) {
+        this.orderList = orders;
         return this;
     }
 
