@@ -37,7 +37,6 @@ public class UserEntity {
         return this.email != null && this.email.length() != 0
                 && this.firstName != null && this.firstName.length() != 0
                 && this.lastName != null && this.lastName.length() != 0
-                && this.phone != null && this.phone.length() != 0
                 && this.orderList != null && this.birthDate != null;
     }
 
