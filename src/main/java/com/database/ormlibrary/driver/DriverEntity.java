@@ -1,6 +1,6 @@
 package com.database.ormlibrary.driver;
 
-import com.database.ormlibrary.user.SettingsEntity;
+import com.database.ormlibrary.user.UserEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,62 +8,31 @@ import java.util.List;
 @Entity
 public class DriverEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
     private Long id;
-    @Column(unique = true)
-    private String email;
-    @Column(unique = true)
-    private String phone;
-    private String firstName;
-    private String lastName;
-    private String car; //blue something i don't know car names
-    @Embedded
-    private SettingsEntity settings;
+
+    @OneToOne
+    @MapsId
+    private UserEntity user;
+
     @OneToMany
     private List<DriverRatingEntity> ratings;
+    private String car;
 
     public Long getId() {
         return id;
     }
 
-    public DriverEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
-    public String getEmail() {
-        return email;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public DriverEntity setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public DriverEntity setPhone(String phone) {
-        this.phone = phone;
-        return this;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public DriverEntity setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public DriverEntity setLastName(String lastName) {
-        this.lastName = lastName;
+    public DriverEntity setUser(UserEntity user) {
+        this.user = user;
         return this;
     }
 
@@ -84,5 +53,4 @@ public class DriverEntity {
         this.car = car;
         return this;
     }
-
 }
