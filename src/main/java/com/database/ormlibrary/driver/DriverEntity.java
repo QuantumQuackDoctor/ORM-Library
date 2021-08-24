@@ -11,7 +11,8 @@ public class DriverEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     @MapsId
     private UserEntity user;
 
