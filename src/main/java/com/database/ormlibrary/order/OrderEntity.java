@@ -7,6 +7,7 @@ import com.database.ormlibrary.user.UserEntity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class OrderEntity {
@@ -21,7 +22,10 @@ public class OrderEntity {
     private String restaurantNote;
     private String driverNote;
     private Boolean active;
+    private Boolean paymentConfirmed;
     private String address;
+    @Column(unique = true)
+    private UUID confirmationCode;
     @OneToMany (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FoodOrderEntity> items;
     @Embedded
@@ -29,12 +33,31 @@ public class OrderEntity {
     @Embedded
     private PriceEntity priceEntity;
 
+
+    public Boolean getPaymentConfirmed() {
+        return paymentConfirmed;
+    }
+
+    public OrderEntity setPaymentConfirmed(Boolean paymentConfirmed) {
+        this.paymentConfirmed = paymentConfirmed;
+        return this;
+    }
+
     public UserEntity getUser() {
         return user;
     }
 
     public OrderEntity setUser(UserEntity user) {
         this.user = user;
+        return this;
+    }
+
+    public UUID getConfirmationCode() {
+        return confirmationCode;
+    }
+
+    public OrderEntity setConfirmationCode(UUID confirmationCode) {
+        this.confirmationCode = confirmationCode;
         return this;
     }
 
