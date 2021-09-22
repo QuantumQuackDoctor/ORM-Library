@@ -25,7 +25,8 @@ public class JwtTokenUtil {
     }
 
     public Claims getAllClaims(String token) throws ExpiredJwtException {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        Claims c = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return c;
     }
 
     public boolean isInvalid(String token) {
@@ -38,6 +39,7 @@ public class JwtTokenUtil {
     }
 
     public String getEmail(String token) throws ExpiredJwtException {
-        return getAllClaims(token).getSubject();
+        String res = getAllClaims(token).getSubject();
+        return res;
     }
 }
