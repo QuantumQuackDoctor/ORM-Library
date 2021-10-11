@@ -30,17 +30,6 @@ public class UserEntity {
     @Embedded
     private SettingsEntity settings;
 
-    @OneToMany
-    private List<OrderEntity> orderList;
-
-    public List<OrderEntity> getOrderList() {
-        return orderList;
-    }
-
-    public UserEntity setOrderList(List<OrderEntity> orders) {
-        this.orderList = orders;
-        return this;
-    }
 
     public String getPassword() {
         return password;
