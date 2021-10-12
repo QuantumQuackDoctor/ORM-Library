@@ -1,6 +1,7 @@
 package com.database.ormlibrary.order;
 
 import com.database.ormlibrary.food.MenuItemEntity;
+import com.database.ormlibrary.food.RestaurantEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,10 +15,29 @@ public class FoodOrderEntity {
     @OneToMany (fetch = FetchType.EAGER)
     private List<OrderConfigurationEntity> configurations;
 
-    private Long restaurantId;
+    @ManyToOne
+    private RestaurantEntity restaurant;
 
-    @ManyToMany
-    private List<MenuItemEntity> orderItems;
+    @ManyToOne
+    private MenuItemEntity menuItem;
+
+    public RestaurantEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public FoodOrderEntity setRestaurant(RestaurantEntity restaurant) {
+        this.restaurant = restaurant;
+        return this;
+    }
+
+    public MenuItemEntity getMenuItem() {
+        return menuItem;
+    }
+
+    public FoodOrderEntity setMenuItem(MenuItemEntity menuItem) {
+        this.menuItem = menuItem;
+        return this;
+    }
 
     public Long getId() {
         return id;
@@ -25,24 +45,6 @@ public class FoodOrderEntity {
 
     public FoodOrderEntity setId(Long id) {
         this.id = id;
-        return this;
-    }
-
-    public List<MenuItemEntity> getOrderItems() {
-        return orderItems;
-    }
-
-    public FoodOrderEntity setOrderItems(List<MenuItemEntity> orderItem) {
-        this.orderItems = orderItem;
-        return this;
-    }
-
-    public Long getRestaurantId() {
-        return restaurantId;
-    }
-
-    public FoodOrderEntity setRestaurantId(Long restaurantId) {
-        this.restaurantId = restaurantId;
         return this;
     }
 
