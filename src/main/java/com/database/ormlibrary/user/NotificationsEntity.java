@@ -6,7 +6,27 @@ import javax.persistence.Embeddable;
 public class NotificationsEntity {
 
     private Boolean emailOption;
+    private Boolean emailOrder;
+    private Boolean emailDelivery;
     private Boolean phoneOption;
+
+    public Boolean getEmailOrder() {
+        return emailOrder;
+    }
+
+    public NotificationsEntity setEmailOrder(Boolean emailOrder) {
+        this.emailOrder = emailOrder;
+        return this;
+    }
+
+    public Boolean getEmailDelivery() {
+        return emailDelivery;
+    }
+
+    public NotificationsEntity setEmailDelivery(Boolean emailDelivery) {
+        this.emailDelivery = emailDelivery;
+        return this;
+    }
 
     public Boolean getEmail() {
         return emailOption;
