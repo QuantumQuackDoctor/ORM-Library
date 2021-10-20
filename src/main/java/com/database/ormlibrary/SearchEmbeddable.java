@@ -3,7 +3,7 @@ package com.database.ormlibrary;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class SearchEmbeddable{
+public class SearchEmbeddable {
     private String searchPrimary; //term,term,term
     private String searchSecondary; //term,term,term
 

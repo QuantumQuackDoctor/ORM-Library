@@ -20,6 +20,18 @@ public class DriverEntity {
     private List<DriverRatingEntity> ratings;
     private String car;
 
+    @Column(columnDefinition = "boolean default false")
+    private boolean checkedIn;
+
+    public boolean isCheckedIn() {
+        return checkedIn;
+    }
+
+    public DriverEntity setCheckedIn(boolean active) {
+        this.checkedIn = active;
+        return this;
+    }
+
     public Long getId() {
         return id;
     }

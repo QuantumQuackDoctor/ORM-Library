@@ -37,14 +37,14 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
         final String token = header.replace("Bearer ", "");
         AuthDetails authDetails;
-        try{
+        try {
             authDetails = authRepo.findByEmail(jwtTokenUtil.getEmail(token)).map(it ->
                     new AuthDetails(it.getId(),
                             it.getEmail(),
                             it.getPassword(),
                             Collections.singleton(new SimpleGrantedAuthority(it.getUserRole().getRole())))
             ).orElse(null);
-        }catch (ExpiredJwtException ignored){ //don't really need to read a message here
+        } catch (ExpiredJwtException ignored) { //don't really need to read a message here
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token is expired");
             return;
         }

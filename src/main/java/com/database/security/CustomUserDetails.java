@@ -12,11 +12,12 @@ import java.util.Optional;
 
 @Service
 public class CustomUserDetails implements UserDetailsService {
+    private final AuthRepo authRepo;
+
     public CustomUserDetails(AuthRepo authRepo) {
         this.authRepo = authRepo;
     }
 
-    private final AuthRepo authRepo;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserEntity> entity = authRepo.findByEmail(username); //username is email in this schema

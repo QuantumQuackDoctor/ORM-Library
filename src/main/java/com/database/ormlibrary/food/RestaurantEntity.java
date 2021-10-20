@@ -1,6 +1,5 @@
 package com.database.ormlibrary.food;
 
-import com.database.ormlibrary.CoordinatesEmbeddable;
 import com.database.ormlibrary.HoursEmbeddable;
 import com.database.ormlibrary.SearchEmbeddable;
 
@@ -24,7 +23,7 @@ public class RestaurantEntity {
     private HoursEmbeddable hours;
     @Embedded
     private SearchEmbeddable search;
-//    @Embedded
+    //    @Embedded
 //    private CoordinatesEmbeddable coordinates;
     @OneToMany
     private List<PromotionsEntity> promotions;

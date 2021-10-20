@@ -12,7 +12,7 @@ public class FoodOrderEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToMany (fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<OrderConfigurationEntity> configurations;
 
     @ManyToOne
