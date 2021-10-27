@@ -1,11 +1,9 @@
 package com.database.ormlibrary.order;
 
 import com.database.ormlibrary.driver.DriverEntity;
-import com.database.ormlibrary.food.MenuItemEntity;
 import com.database.ormlibrary.user.UserEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -22,12 +20,13 @@ public class OrderEntity {
     private String driverNote;
     private Boolean active;
     private String address;
-    @OneToMany (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FoodOrderEntity> items;
     @Embedded
     private OrderTimeEntity orderTimeEntity;
     @Embedded
     private PriceEntity priceEntity;
+    private Boolean refunded;
 
     public UserEntity getUser() {
         return user;
@@ -46,6 +45,7 @@ public class OrderEntity {
         this.orderTimeEntity = orderTimeEntity;
         return this;
     }
+
     public Long getId() {
         return id;
     }
@@ -136,12 +136,10 @@ public class OrderEntity {
         return this;
     }
 
-    private Boolean refunded;
-
-    public boolean checkRequiredFields(){
+    public boolean checkRequiredFields() {
         if (delivery == null || items == null
-        || orderTimeEntity == null || priceEntity == null
-        || address == null)
+                || orderTimeEntity == null || priceEntity == null
+                || address == null)
             return false;
         else
             return true;

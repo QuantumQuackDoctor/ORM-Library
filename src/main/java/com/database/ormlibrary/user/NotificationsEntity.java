@@ -1,6 +1,7 @@
 package com.database.ormlibrary.user;
 
 import javax.persistence.Embeddable;
+import java.util.Objects;
 
 @Embeddable
 public class NotificationsEntity {
@@ -9,6 +10,19 @@ public class NotificationsEntity {
     private Boolean emailOrder;
     private Boolean emailDelivery;
     private Boolean phoneOption;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NotificationsEntity that = (NotificationsEntity) o;
+        return Objects.equals(emailOption, that.emailOption) && Objects.equals(emailOrder, that.emailOrder) && Objects.equals(emailDelivery, that.emailDelivery) && Objects.equals(phoneOption, that.phoneOption);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(emailOption, emailOrder, emailDelivery, phoneOption);
+    }
 
     public Boolean getEmailOrder() {
         return emailOrder;
