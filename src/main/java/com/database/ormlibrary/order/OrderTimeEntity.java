@@ -86,4 +86,13 @@ public class OrderTimeEntity {
         this.deliverySlot = deliverySlot;
         return this;
     }
+
+    public ZonedDateTime getDriverPickUp() {
+        return driverPickUp;
+    }
+
+    public OrderTimeEntity setDriverPickUp(ZonedDateTime driverPickUp) {
+        this.driverPickUp = driverPickUp;
+        return this;
+    }
 }
