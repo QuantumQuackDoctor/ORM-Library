@@ -29,6 +29,16 @@ public class OrderEntity {
     @Embedded
     private PriceEntity priceEntity;
 
+    private Long recordId;
+
+    public Long getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
+    }
+
     public UserEntity getUser() {
         return user;
     }
@@ -139,11 +149,8 @@ public class OrderEntity {
     private Boolean refunded;
 
     public boolean checkRequiredFields(){
-        if (delivery == null || items == null
-        || orderTimeEntity == null || priceEntity == null
-        || address == null)
-            return false;
-        else
-            return true;
+        return delivery != null && items != null
+                && orderTimeEntity != null && priceEntity != null
+                && address != null;
     }
 }
