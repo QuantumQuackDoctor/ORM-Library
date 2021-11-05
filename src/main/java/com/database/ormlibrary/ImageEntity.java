@@ -7,6 +7,7 @@ public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(nullable = false)
     @Lob
     private byte[] image; //ByteArrayInputStream
 

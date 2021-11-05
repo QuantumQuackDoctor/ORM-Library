@@ -1,11 +1,8 @@
 package com.database.ormlibrary.user;
 
-import com.database.ormlibrary.order.OrderEntity;
-
 import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @Entity

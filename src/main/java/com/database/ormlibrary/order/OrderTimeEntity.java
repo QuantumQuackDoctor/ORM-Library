@@ -10,6 +10,7 @@ public class OrderTimeEntity {
     private ZonedDateTime restaurantStart;
     private ZonedDateTime restaurantComplete;
     private ZonedDateTime driverAccept;
+    private ZonedDateTime driverPickUp;
     private ZonedDateTime driverComplete;
     private ZonedDateTime orderComplete;
     private ZonedDateTime deliverySlot; //beginning of time slot, includes 10 minutes afterwards
@@ -83,6 +84,15 @@ public class OrderTimeEntity {
 
     public OrderTimeEntity setDeliverySlot(ZonedDateTime deliverySlot) {
         this.deliverySlot = deliverySlot;
+        return this;
+    }
+
+    public ZonedDateTime getDriverPickUp() {
+        return driverPickUp;
+    }
+
+    public OrderTimeEntity setDriverPickUp(ZonedDateTime driverPickUp) {
+        this.driverPickUp = driverPickUp;
         return this;
     }
 }
