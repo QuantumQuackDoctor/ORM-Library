@@ -6,6 +6,7 @@ import javax.persistence.Embeddable;
 public class PriceEntity {
     private Float foodPrice;
     private Float deliveryPrice;
+    private Float tip;
 
     public Float getFood() {
         return foodPrice;
@@ -33,6 +34,4 @@ public class PriceEntity {
         this.tip = tip;
         return this;
     }
-
-    private Float tip;
 }
