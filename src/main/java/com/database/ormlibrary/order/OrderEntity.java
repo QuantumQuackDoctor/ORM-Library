@@ -28,6 +28,16 @@ public class OrderEntity {
     private PriceEntity priceEntity;
     private Boolean refunded;
 
+    private Long recordId;
+
+    public Long getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
+    }
+
     public UserEntity getUser() {
         return user;
     }
@@ -135,7 +145,6 @@ public class OrderEntity {
         this.address = address;
         return this;
     }
-
     public boolean checkRequiredFields() {
         if (delivery == null || items == null
                 || orderTimeEntity == null || priceEntity == null
