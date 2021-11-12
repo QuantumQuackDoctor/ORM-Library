@@ -12,6 +12,7 @@ public class UserEntity {
     private Long id;
     @Column(unique = true)
     private String email;
+    private String deactivatedEmail;
     private String password;
     private String phone;
     private String firstName;
@@ -27,6 +28,14 @@ public class UserEntity {
     @Embedded
     private SettingsEntity settings;
 
+    public String getDeactivatedEmail() {
+        return deactivatedEmail;
+    }
+
+    public UserEntity setDeactivatedEmail(String deactivatedEmail) {
+        this.deactivatedEmail = deactivatedEmail;
+        return this;
+    }
 
     public String getPassword() {
         return password;
