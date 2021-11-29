@@ -12,7 +12,7 @@ public class RestaurantRatingEntity {
     @ManyToOne
     private UserEntity user;
     private String imageId;
-    private Integer stars;
+    private Double stars;
     private String description;
 
     public Long getId() {
@@ -42,11 +42,11 @@ public class RestaurantRatingEntity {
         return this;
     }
 
-    public Integer getStars() {
+    public Double getStars() {
         return stars;
     }
 
-    public RestaurantRatingEntity setStars(Integer stars) {
+    public RestaurantRatingEntity setStars(Double stars) {
         this.stars = stars;
         return this;
     }
